@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gray: #bdbdbd;
+    --blue: #2f80ed;
+    --softBlue: #2f81edd9;
+    --bgColor: white;
+    --textColor: black;
+    --error: red;
+  }
+
+  :root[data-theme='dark'] {
+    --gray: #494848;
+    --blue: #2f80ed;
+    --softBlue: #2f81edd9;
+    --bgColor: rgb(38, 38, 38);
+    --textColor: rgb(255, 255, 255);
+    --error: red;
+  }
+}
+
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+.upload__img__input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload__img__label {
+  cursor: pointer;
+  padding: 30px 12px;
+  color: var(--textColor);
+  background: var(--bgColor);
+  border-radius: 50%;
+}

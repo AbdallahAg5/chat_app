@@ -1,0 +1,13 @@
+ const HandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e
+  ) => {
+    const { name, value } = e.target as HTMLButtonElement;
+    setVal({ ...val, [name]: value });
+  };
+
+
+    onChange={(e: React.ChangeEvent<HTMLInputElement>) => HandleChange(e)}
+      HandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+
+
