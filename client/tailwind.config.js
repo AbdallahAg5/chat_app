@@ -4,9 +4,12 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        xs: '450px',
+      },
       colors: {
-        gray: 'var(--gray)',
-        blue: 'var(--blue)',
+        customGray: 'var(--gray)',
+        customBlue: 'var(--blue)',
         softBlue: 'var(--softBlue)',
         bgColor: 'var(--bgColor)',
         textColor: 'var(--textColor)',

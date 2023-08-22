@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { LocationType } from '../type';
 
-const useGeoLocation = () => {
+const useGeoLocation: () => LocationType = () => {
   const [location, setLocation] = useState<LocationType>({
     lat: null,
     lng: null,
   });
+
+  useEffect(() => {}, [location.lat, location.lng]);
 
   const onSuccess: (location: GeolocationPosition) => void = (
     location: GeolocationPosition

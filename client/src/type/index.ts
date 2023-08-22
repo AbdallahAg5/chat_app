@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import { FieldError, UseFormRegister } from 'react-hook-form';
+import { ReactElement, ReactNode } from 'react';
+import { FieldError, FieldErrors, UseFormRegister } from 'react-hook-form';
 
 export type Inputs = {
   name?: string | null;
@@ -104,3 +104,18 @@ export type LocationType = {
   lat: number | null;
   lng: number | null;
 };
+
+export type StepPropsType = {
+  uploadedImage?: null | Blob | MediaSource;
+  register: UseFormRegister<CompleteFormType> | UseFormRegister<Inputs>;
+  errors?: FieldErrors<CompleteFormType>;
+};
+
+export type StepContextType = {
+  activeStep: number;
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export interface ContextProviderProps {
+  children: ReactNode;
+}

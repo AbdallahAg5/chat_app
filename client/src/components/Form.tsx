@@ -19,7 +19,7 @@ const FormComp: React.FC<FormType> = ({
   };
 
   return (
-    <div className="grid place-content-center  w-full h-screen  ">
+    <div className="grid place-content-center  w-full lg:w-[50%] h-screen  ">
       <div className="w-[473.831px] border-2 border-gray h-auto py-[2.5em] px-[3em] rounded-[1.2em] relative">
         <HeaderComp />
         <p className=" text-2xl underline-offset-2 underline pt-7 text-textColor">

@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import FormComp from '../components/Form';
 import { LoginBody } from '../components/LoginBody';
 import { RegisterBody } from '../components/RegisterBody';
+import Welcome from '../components/Welcome';
 
 const Form: React.FC = () => {
   const [login, setLogin] = useState<boolean>(false);
   return (
-    <>
+    <div className="flex">
+      <Welcome />
       {login ? (
         <FormComp
           setLogin={setLogin}
@@ -28,7 +30,7 @@ const Form: React.FC = () => {
           body={<RegisterBody btnText="Register" />}
         />
       )}
-    </>
+    </div>
   );
 };
 

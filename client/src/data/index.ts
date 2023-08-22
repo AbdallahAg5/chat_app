@@ -1,5 +1,5 @@
-import github from '../assets/github.png';
 import facebook from '../assets/facebook.png';
+import github from '../assets/github.png';
 import google from '../assets/google.png';
 import twitter from '../assets/twitter.png';
 import { SocialType } from '../type';
@@ -57,3 +57,9 @@ export const FieldOption = {
 export const DataOption = {
   required: 'Data is required',
 };
+
+export const FormSteps = [
+  { title: 'First', description: 'Contact Info' },
+  { title: 'Second', description: 'Date & Time' },
+  { title: 'Third', description: 'Select Rooms' },
+];
