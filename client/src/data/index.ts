@@ -43,6 +43,14 @@ export const PasswordOption = {
   },
 };
 
+export const PhoneOption = {
+  required: 'Phone is required',
+  pattern: {
+    value: /^(?:\d{3}-\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4}|\d{10})$/,
+    message: 'Number must be a valid number',
+  },
+};
+
 export const UserOption = {
   required: 'Name is required',
 };

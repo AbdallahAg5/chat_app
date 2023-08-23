@@ -52,6 +52,7 @@ export type CompleteFormType = {
   lastName: string;
   birthDate: string;
   userImg: string;
+  phone: string;
 };
 
 export type CompleteValFormType = {
@@ -59,6 +60,7 @@ export type CompleteValFormType = {
   lastName: string;
   birthDate: string;
   userImg: string;
+  phone: string;
 };
 
 export type SelectOption = {

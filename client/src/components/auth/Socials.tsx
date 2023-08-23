@@ -1,5 +1,5 @@
 import React from 'react';
-import { SocialType } from '../type';
+import { SocialType } from '../../type';
 
 interface SocialsProps {
   data: SocialType[]; // Array of objects of type "Social"

@@ -15,13 +15,13 @@ import { StepContext } from '../../context/StepContext';
 import { FormSteps } from '../../data';
 
 function StepForm() {
-  const ActiveStep = useContext(StepContext).activeStep;
+  const ActiveStep = useContext(StepContext)?.activeStep;
 
   return (
     <Stepper
       size={['xs', 'sm']}
       colorScheme="red"
-      index={ActiveStep}
+      index={ActiveStep || 0}
       w={'full'}
     >
       {FormSteps.map((step, index) => (

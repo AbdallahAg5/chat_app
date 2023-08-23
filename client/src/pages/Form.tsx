@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FormComp from '../components/Form';
-import { LoginBody } from '../components/LoginBody';
-import { RegisterBody } from '../components/RegisterBody';
-import Welcome from '../components/Welcome';
+import FormComp from '../components/auth/Form';
+import { LoginBody } from '../components/auth/LoginBody';
+import { RegisterBody } from '../components/auth/RegisterBody';
+import Welcome from '../components/auth/Welcome';
 
 const Form: React.FC = () => {
   const [login, setLogin] = useState<boolean>(false);

@@ -1,13 +1,13 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { EmailIcon, Password } from '../assets/Icons';
-import Btn from '../uikit/Btn';
-import Input from '../uikit/Input';
+import { EmailIcon, Password } from '../../assets/Icons';
+import Btn from '../../uikit/Btn';
+import Input from '../../uikit/Input';
 // import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 // import AuthThunk from '../redux/AuthAsync';
 // import { useDispatch } from 'react-redux';
 // import { RootType } from '../redux/store';
-import { EmailOption, PasswordOption } from '../data';
-import { FormBodyType, Inputs, ValType } from '../type';
+import { EmailOption, PasswordOption } from '../../data';
+import { FormBodyType, Inputs, ValType } from '../../type';
 
 export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
   // const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
@@ -26,7 +26,7 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="email"
         placeholder="Email"
-        style="w-full pl-[2.5em]  mt-[.9em] border-2 border-gray rounded-[.4em]"
+        style="w-full pl-[2.5em]  mt-[.9em] border-2 border-customGray rounded-[.4em]"
         Icon={<EmailIcon style="w-5 h-5 absolute top-6 left-2" />}
         altIcon="email__icon"
         name="email"
@@ -38,7 +38,7 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="password"
         placeholder="Password"
-        style="w-full pl-[2.5em] mt-[.9em] border-2 border-gray rounded-[.4em]"
+        style="w-full pl-[2.5em] mt-[.9em] border-2 border-customGray rounded-[.4em]"
         Icon={<Password style="w-5 h-5 absolute top-6 left-2" />}
         altIcon="password__icon"
         name="password"
@@ -50,7 +50,7 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Btn
         type="submit"
         text={btnText}
-        style="bg-blue rounded-[.4em] w-full text-center py-[.3em] text-white mt-[1.8em] hover:bg-softBlue"
+        style="bg-softBlue rounded-[.4em] w-full text-center py-[.3em] text-white mt-[1.8em] hover:bg-softBlue"
       />
     </form>
   );

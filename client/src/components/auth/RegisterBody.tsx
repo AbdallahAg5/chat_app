@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { EmailIcon, Password, User } from '../assets/Icons';
-import { EmailOption, NameOption, PasswordOption } from '../data';
-import { FormBodyType, Inputs, ValType } from '../type';
-import Btn from '../uikit/Btn';
-import Input from '../uikit/Input';
+import { EmailIcon, Password, User } from '../../assets/Icons';
+import { EmailOption, NameOption, PasswordOption } from '../../data';
+import { FormBodyType, Inputs, ValType } from '../../type';
+import Btn from '../../uikit/Btn';
+import Input from '../../uikit/Input';
 // import AuthThunk from '../redux/AuthAsync';
 // import { RootType } from '../redux/store';
 // import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
@@ -26,7 +26,7 @@ export const RegisterBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="text"
         placeholder="Name"
-        style="w-full pl-[2.5em]  border-2 border-gray rounded-[.4em]"
+        style="w-full pl-[2.5em]  border-2 border-customGray rounded-[.4em]"
         Icon={<User style="w-5 h-5 absolute top-3 left-2" />}
         altIcon="user__icon"
         name="name"
@@ -38,7 +38,7 @@ export const RegisterBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="email"
         placeholder="Email"
-        style="w-full pl-[2.5em]   border-2 border-gray rounded-[.4em]"
+        style="w-full pl-[2.5em]   border-2 border-customGray rounded-[.4em]"
         Icon={<EmailIcon style="w-5 h-5 absolute top-3 left-2" />}
         altIcon="email__icon"
         name="email"
@@ -50,7 +50,7 @@ export const RegisterBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="password"
         placeholder="Password"
-        style="w-full pl-[2.5em]  border-2 border-gray rounded-[.4em]"
+        style="w-full pl-[2.5em]  border-2 border-customGray rounded-[.4em]"
         Icon={<Password style="w-5 h-5 absolute top-3 left-2" />}
         altIcon="password__icon"
         name="password"
@@ -62,7 +62,7 @@ export const RegisterBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Btn
         type="submit"
         text={btnText}
-        style="bg-blue rounded-[.4em] w-full text-center py-[.3em] text-white mt-[1.8em] hover:bg-softBlue"
+        style="bg-softBlue rounded-[.4em] w-full text-center py-[.3em] text-white mt-[1.8em] hover:bg-softBlue"
       />
     </form>
   );
