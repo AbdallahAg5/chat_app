@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectOption, SelectType } from '../type';
+import { SelectOption, SelectType } from '../../type';
 
 const Select: React.FC<SelectType> = ({
   style,

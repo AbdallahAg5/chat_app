@@ -6,8 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\ApiController;
 
-class GoogleAuthController extends Controller
+
+
+class GoogleAuthController extends ApiController
 {
     public function redirect(){
         return Socialite::driver('google')->stateless()->redirect();
@@ -18,6 +21,7 @@ class GoogleAuthController extends Controller
     public function callBackGoogle(){
         $google_user = Socialite::driver('google')->stateless()->user();
         $user = User::where('google_id',$google_user->getId())->first();
+        $new_user="";
 
         if(!$user){
             $new_user = User::create([
@@ -36,3 +40,6 @@ class GoogleAuthController extends Controller
 
     }
 }
+
+
+

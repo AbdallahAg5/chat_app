@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import profile from '../../assets/profile.avif';
 import { StepContext } from '../../context/StepContext';
 import { StepPropsType } from '../../type';
-import Btn from '../../uikit/Btn';
-import Input from '../../uikit/Input';
+import Btn from '../uikit/Btn';
+import Input from '../uikit/Input';
 
 const StepOne: React.FC<StepPropsType> = ({ uploadedImage, register }) => {
   const setActiveStep = useContext(StepContext)?.setActiveStep;

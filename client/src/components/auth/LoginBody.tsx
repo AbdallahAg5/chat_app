@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { EmailIcon, Password } from '../../assets/Icons';
-import Btn from '../../uikit/Btn';
-import Input from '../../uikit/Input';
+import Btn from '../uikit/Btn';
+import Input from '../uikit/Input';
 // import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 // import AuthThunk from '../redux/AuthAsync';
 // import { useDispatch } from 'react-redux';
@@ -26,7 +26,9 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="email"
         placeholder="Email"
-        style="w-full pl-[2.5em]  mt-[.9em] border-2 border-customGray rounded-[.4em]"
+        style={`w-full pl-[2.5em]  mt-[.9em] border-2  rounded-[.4em] ${
+          !errors.email ? 'border-customGray' : 'border-2 border-error'
+        }`}
         Icon={<EmailIcon style="w-5 h-5 absolute top-6 left-2" />}
         altIcon="email__icon"
         name="email"
@@ -38,7 +40,9 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
       <Input
         type="password"
         placeholder="Password"
-        style="w-full pl-[2.5em] mt-[.9em] border-2 border-customGray rounded-[.4em]"
+        style={`w-full pl-[2.5em] mt-[.9em] border-2  rounded-[.4em] ${
+          !errors.password ? 'border-customGray' : 'border-2 border-error'
+        }`}
         Icon={<Password style="w-5 h-5 absolute top-6 left-2" />}
         altIcon="password__icon"
         name="password"

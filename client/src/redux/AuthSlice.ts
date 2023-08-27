@@ -1,10 +1,7 @@
 import { InitialStateType } from '../type/redux';
 import { createSlice } from '@reduxjs/toolkit';
-import AuthThunk, { GetAuthUser } from './AuthAsync';
+import AuthThunk, { GetAuthUser, RegisterThunk } from './AuthAsync';
 import {
-  AuthPending,
-  AuthRejected,
-  AuthSuccess,
   GetAuthUserPending,
   GetAuthUserRejected,
   GetAuthUserSuccess,
@@ -23,12 +20,15 @@ const AuthSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(AuthThunk.pending, AuthPending)
-      .addCase(AuthThunk.fulfilled, AuthSuccess)
-      .addCase(AuthThunk.rejected, AuthRejected)
+      .addCase(AuthThunk.pending, GetAuthUserPending)
+      .addCase(AuthThunk.fulfilled, GetAuthUserSuccess)
+      .addCase(AuthThunk.rejected, GetAuthUserRejected)
       .addCase(GetAuthUser.pending, GetAuthUserPending)
       .addCase(GetAuthUser.fulfilled, GetAuthUserSuccess)
-      .addCase(GetAuthUser.rejected, GetAuthUserRejected);
+      .addCase(GetAuthUser.rejected, GetAuthUserRejected)
+      .addCase(RegisterThunk.pending, GetAuthUserPending)
+      .addCase(RegisterThunk.fulfilled, GetAuthUserSuccess)
+      .addCase(RegisterThunk.rejected, GetAuthUserRejected);
   },
 });
 

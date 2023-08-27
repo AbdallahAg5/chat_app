@@ -30,7 +30,7 @@ export const data: SocialType[] = [
 export const EmailOption = {
   required: 'Email is required',
   pattern: {
-    value: /^[a-zA-Z0-9]([a-zA-Z0-9]+)?@$/,
+    value: /^[a-zA-Z0-9]*@.*$/,
     message: 'Email must be correct',
   },
 };

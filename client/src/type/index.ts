@@ -121,3 +121,7 @@ export type StepContextType = {
 export interface ContextProviderProps {
   children: ReactNode;
 }
+
+export type SeoType = {
+  title: string;
+};

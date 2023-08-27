@@ -3,6 +3,8 @@ export type InitialStateType = {
   status: 'pending' | 'error' | 'success' | null;
   user: null | UserData;
   errorMessage: null | string;
+  message: string;
+  token: string;
 };
 
 export type UserData = {

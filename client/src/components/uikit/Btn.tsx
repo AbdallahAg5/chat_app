@@ -1,4 +1,4 @@
-import { BtnType } from '../type';
+import { BtnType } from '../../type';
 
 const Btn: React.FC<BtnType> = ({ style, text, type }) => {
   return (

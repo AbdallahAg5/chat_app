@@ -1,4 +1,4 @@
-import { InputType } from '../type';
+import { InputType } from '../../type';
 
 const Input: React.FC<InputType> = ({
   type,
@@ -24,12 +24,12 @@ const Input: React.FC<InputType> = ({
         autoCorrect="false"
         placeholder={placeholder}
         spellCheck="false"
-        className={` py-[.4em]   ${style} `}
+        className={` py-[.4em] bg-white text-black   ${style} `}
         onChange={onChangeHandler}
         {...register(name, registredOption)}
         name={name}
       />
-      <span className=" self-start  text-sm text-red-800 font-bold">
+      <span className=" self-start  text-sm text-error font-bold">
         {error?.message}
       </span>
     </div>

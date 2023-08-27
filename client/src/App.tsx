@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import StepProvider from './context/StepContext';
 import CompleteProfile from './pages/CompleteProfile';
-import Form from './pages/Form';
+import Form from './pages/AuthForm';
 
 const App: React.FC = () => {
   return (

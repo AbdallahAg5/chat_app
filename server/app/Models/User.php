@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,6 +23,22 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    /**
+     * Mutator used to format the attributes
+     * before saving them into the database
+     */
+    public function setNameAttribute($name){
+        $this->attributes["name"] = strtolower($name);
+    }
+
+    /**
+     * Accessors are used to format the attributes
+     * when you retrieve them from database
+     *  */
+    public function getNameAttribute($name){
+        return ucwords($name);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +58,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    function getJWTIdentifier(){
+        return $this->getKey();
+    }
+
+
+
+    function getJWTCustomClaims(){
+         return [];
+    }
+
+
 }
+

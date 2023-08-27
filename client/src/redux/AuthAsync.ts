@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosClient from '../api/api';
 import axios from 'axios';
+import { ValType } from '../type';
 
 const AuthThunk = createAsyncThunk('auth', async () => {
   try {
@@ -15,6 +16,18 @@ const AuthThunk = createAsyncThunk('auth', async () => {
 });
 
 export default AuthThunk;
+
+export const RegisterThunk = createAsyncThunk(
+  'register',
+  async (data: ValType) => {
+    try {
+      const response = await axiosClient.post('/auth/register', data);
+      return response.data;
+    } catch (error) {
+      throw new Error('Failed to auth.');
+    }
+  }
+);
 
 export const GetAuthUser = createAsyncThunk('getuser', async (_, thunkAPI) => {
   try {

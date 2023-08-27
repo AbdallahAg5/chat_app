@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react';
 import { Phone, User } from '../../assets/Icons';
 import { FieldOption, PhoneOption } from '../../data';
 import { StepPropsType } from '../../type';
-import Input from '../../uikit/Input';
+import Input from '../uikit/Input';
 
 const StepTwo: React.FC<StepPropsType> = ({ register, errors }) => {
   return (

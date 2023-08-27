@@ -21,6 +21,7 @@ const useTheme: (initialTheme: 'dark' | 'light') => useThemeReturnType = (
 
   const changeTheme = (newTheme: 'dark' | 'light') => {
     localStorage.setItem('theme', newTheme);
+    localStorage.setItem('chakra-ui-color-mode', newTheme);
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
   };
