@@ -12,9 +12,9 @@ trait ApiResponser
 
 
 
-  private function errorResponse($message,$code)
+  private function errorResponse($data,$message,$code)
   {
-     return response()->json(['error' => $message,'code' => $code],$code);
+    return response()->json(["status" => $data, "message" => $message], $code);
   }
 
 

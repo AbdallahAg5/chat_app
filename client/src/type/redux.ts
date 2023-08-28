@@ -1,14 +1,17 @@
 export type InitialStateType = {
-  userName: string;
   status: 'pending' | 'error' | 'success' | null;
   user: null | UserData;
-  errorMessage: null | string;
-  message: string;
-  token: string;
+  message: null | string | undefined;
+  token: null | string;
 };
 
 export type UserData = {
   id: number;
   name: string;
   email: string;
+};
+
+export type laravelRequestType = {
+  status: number;
+  data?: { errors: { email?: string[]; password: string[] } };
 };

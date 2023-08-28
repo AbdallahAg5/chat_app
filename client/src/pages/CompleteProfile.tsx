@@ -1,7 +1,7 @@
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Header } from '../components/Header';
 import StepOne from '../components/completeProfile/StepOne';
 import StepTwo from '../components/completeProfile/StepTwo';
@@ -12,6 +12,7 @@ import { GetAuthUser } from '../redux/AuthAsync';
 import { RootType } from '../redux/store';
 import { CompleteFormType } from '../type';
 import StepThree from '../components/completeProfile/StepThree';
+import { ToastId, useToast } from '@chakra-ui/react';
 
 const CompleteProfile = () => {
   const [uploadedImage, setUploadedImage] = useState<
@@ -42,6 +43,26 @@ const CompleteProfile = () => {
     }
     dispatch(GetAuthUser());
   }, [userImgValue, dispatch]);
+
+  const auth = useSelector((e: RootType) => e.auth);
+  const toast = useToast();
+
+  useEffect(() => {
+    if (auth.message && auth.status == 'success') {
+      const toastId: ToastId = toast({
+        title: 'Auth message.',
+        description: auth.message,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        position: 'top-right',
+      });
+
+      return () => {
+        toast.close(toastId);
+      };
+    }
+  }, []);
 
   return (
     <>

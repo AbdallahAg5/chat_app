@@ -8,10 +8,10 @@ import {
 } from './reducers';
 
 const InitialState: InitialStateType = {
-  userName: 'Abdallah Ag',
   user: null,
   status: null,
-  errorMessage: null,
+  message: null,
+  token: null,
 };
 
 const AuthSlice = createSlice({

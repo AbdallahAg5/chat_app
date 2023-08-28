@@ -19,12 +19,14 @@ export default AuthThunk;
 
 export const RegisterThunk = createAsyncThunk(
   'register',
-  async (data: ValType) => {
+  async (data: ValType, thunkAPI) => {
     try {
       const response = await axiosClient.post('/auth/register', data);
       return response.data;
-    } catch (error) {
-      throw new Error('Failed to auth.');
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && axios.isAxiosError(err) && err?.response) {
+        return thunkAPI.rejectWithValue(err.response);
+      }
     }
   }
 );

@@ -6,11 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Controllers\ApiController;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends ApiController
+class AuthController extends Controller
 {
 
     public function __construct(){
@@ -31,13 +31,19 @@ class AuthController extends ApiController
 
         $token = Auth::login($user);
 
+       if (!$token) {
+            return response()->json(["status" => "error", "message" => 'Register Failed'],401);
+       }
+
         return response()->json([
             'status' => 'success',
             'message' => 'User Registered Successfully !',
             'user' => $user,
             'token' => $token
         ]);
-   }
+
+
+}
 
 
 
@@ -49,7 +55,7 @@ class AuthController extends ApiController
         $token = Auth::attempt($credentials);
 
         if (!$token) {
-            return $this->errorResponse('Login Failed', 400);
+            return response()->json(["status" => "error", "message" => 'Login Failed'],401);
         }
 
         return response()->json([
@@ -63,6 +69,6 @@ class AuthController extends ApiController
 
 
    public function logout(){
-
+        
    }
 }

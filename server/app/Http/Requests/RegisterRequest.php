@@ -31,4 +31,17 @@ class RegisterRequest extends FormRequest
             "password" => ["required",Password::min(8)->letters()->numbers()->symbols()]
         ];
     }
+
+
+    public function messages()
+    {
+        return [
+            "email.unique" => "Email Already Taken .",
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least :min characters.',
+            'password.letters' => 'The password must contain at least one letter.',
+            'password.numbers' => 'The password must contain at least one number.',
+            'password.symbols' => 'hiiiiii.'
+        ];
+    }
 }

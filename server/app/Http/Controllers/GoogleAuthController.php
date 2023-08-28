@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ApiController;
+use Illuminate\Routing\Controller;
 
 
 
-class GoogleAuthController extends ApiController
+class GoogleAuthController extends Controller
 {
     public function redirect(){
         return Socialite::driver('google')->stateless()->redirect();
