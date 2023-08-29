@@ -1,26 +1,23 @@
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Header } from '../components/Header';
 import StepOne from '../components/completeProfile/StepOne';
 import StepTwo from '../components/completeProfile/StepTwo';
 import StepForm from '../components/completeProfile/Steps';
 import { StepContext } from '../context/StepContext';
-import useGeoLocation from '../hooks/useGeolocation';
-import { GetAuthUser } from '../redux/AuthAsync';
+// import useGeoLocation from '../hooks/useGeolocation';
 import { RootType } from '../redux/store';
 import { CompleteFormType } from '../type';
 import StepThree from '../components/completeProfile/StepThree';
 import { ToastId, useToast } from '@chakra-ui/react';
+import { ImgContext } from '../context/ProfileImgContext';
 
 const CompleteProfile = () => {
-  const [uploadedImage, setUploadedImage] = useState<
-    null | Blob | MediaSource | undefined | string
-  >(null);
+  const setImg = useContext(ImgContext);
   const activeStepContext = useContext(StepContext)?.activeStep;
-  console.log(activeStepContext);
-  const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
+  const auth = useSelector((e: RootType) => e.auth);
+  const toast = useToast();
   const setActiveStep = useContext(StepContext)?.setActiveStep;
   const {
     watch,
@@ -33,19 +30,14 @@ const CompleteProfile = () => {
     console.log(data);
   };
   const userImgValue = watch('userImg');
-  const location = useGeoLocation();
-  console.log(location);
+  // const location = useGeoLocation();
 
   useEffect(() => {
-    if (userImgValue && userImgValue.length > 0) {
+    if (userImgValue && userImgValue.length > 0 && !setImg?.croppedImg) {
       const selectedImage = userImgValue[0];
-      setUploadedImage(selectedImage);
+      setImg?.setUploadedImage(selectedImage);
     }
-    dispatch(GetAuthUser());
-  }, [userImgValue, dispatch]);
-
-  const auth = useSelector((e: RootType) => e.auth);
-  const toast = useToast();
+  }, [userImgValue, setImg]);
 
   useEffect(() => {
     if (auth.message && auth.status == 'success') {
@@ -77,11 +69,7 @@ const CompleteProfile = () => {
             className="flex-col  mx-auto mt-2  flex border-2  h-auto  border-b-2 border-customBlue rounded-lg "
           >
             {activeStepContext === 0 ? (
-              <StepOne
-                uploadedImage={uploadedImage}
-                register={register}
-                errors={errors}
-              />
+              <StepOne register={register} errors={errors} />
             ) : activeStepContext === 2 ? (
               <StepTwo register={register} errors={errors} />
             ) : (

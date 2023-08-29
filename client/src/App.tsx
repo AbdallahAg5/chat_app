@@ -1,23 +1,32 @@
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import StepProvider from './context/StepContext';
+import ImageContextProvider from './context/ProfileImgContext';
 import CompleteProfile from './pages/CompleteProfile';
-import Form from './pages/AuthForm';
+const Loader = lazy(() => import('./components/uikit/Loader'));
+const StepProvider = lazy(() => import('./context/StepContext'));
+const Form = lazy(() => import('./pages/AuthForm'));
+const AuthContext = lazy(() => import('./context/AuthContext'));
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Form />} path="/" />
-        <Route
-          element={
-            <StepProvider>
-              {' '}
-              <CompleteProfile />
-            </StepProvider>
-          }
-          path="/complete/profile"
-        />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route element={<Form />} path="/" />
+          <Route element={<AuthContext />}>
+            <Route
+              element={
+                <ImageContextProvider>
+                  <StepProvider>
+                    <CompleteProfile />
+                  </StepProvider>
+                </ImageContextProvider>
+              }
+              path="/complete/profile"
+            />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };

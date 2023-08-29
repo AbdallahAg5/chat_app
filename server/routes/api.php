@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\AuthController;
@@ -16,14 +16,15 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(["prefix" => "auth"],function(){
+    Route::get('/google',[GoogleAuthController::class,"redirect"]);
+    Route::get('/google/callback',[GoogleAuthController::class,"callBackGoogle"]);
+    Route::post('/register',[AuthController::class,"register"]);
+    Route::post('/login',[AuthController::class,"login"]);
+    Route::get('/profile',[AuthController::class,"profile"]);
 });
 
 
-Route::post('/auth/register',[AuthController::class,"register"]);
-Route::post('/auth/login',[AuthController::class,"login"]);
 
-Route::get('/auth/google',[GoogleAuthController::class,"redirect"]);
-Route::get('/auth/google/callback',[GoogleAuthController::class,"callBackGoogle"]);
 

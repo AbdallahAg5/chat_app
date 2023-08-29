@@ -17,6 +17,7 @@ export type BtnType = {
   text: string;
   style: string;
   type: 'button' | 'submit' | 'reset' | undefined;
+  onClick?: () => void;
 };
 
 export type SocialType = {
@@ -108,7 +109,6 @@ export type LocationType = {
 };
 
 export type StepPropsType = {
-  uploadedImage?: null | Blob | MediaSource;
   register: UseFormRegister<CompleteFormType> | UseFormRegister<Inputs>;
   errors?: FieldErrors<CompleteFormType>;
 };

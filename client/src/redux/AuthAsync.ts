@@ -33,13 +33,11 @@ export const RegisterThunk = createAsyncThunk(
 
 export const GetAuthUser = createAsyncThunk('getuser', async (_, thunkAPI) => {
   try {
-    const res = await axiosClient.get('/user');
-    return res.data.data;
+    const res = await axiosClient.get('/auth/profile');
+    return res.data;
   } catch (err: unknown) {
-    if (axios.isAxiosError(err) && axios.isAxiosError(err)) {
-      if (err?.response?.status == 401) {
-        return thunkAPI.rejectWithValue(err?.response?.statusText);
-      }
+    if (axios.isAxiosError(err) && axios.isAxiosError(err) && err?.response) {
+      return thunkAPI.rejectWithValue(err?.response);
     }
   }
 });

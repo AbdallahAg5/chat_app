@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'User Registered Successfully !',
+            'message' => 'You are logged in !',
             'user' => $user,
             'token' => $token
         ]);
@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         return response()->json([
                 'status' => 'success',
-                'message' => 'User Logged In Successfully !',
+                'message' => 'You are logged in !',
                 'user' => Auth::user(),
                 'token' => $token
             ]);
@@ -68,7 +68,19 @@ class AuthController extends Controller
    }
 
 
+
+   public function profile(){
+
+
+      return response()->json([
+        'status' => 'success',
+        'message' => 'User auth',
+        'user' => auth()->user(),
+    ]);
+   }
+
+
    public function logout(){
-        
+
    }
 }

@@ -3,6 +3,7 @@ export type InitialStateType = {
   user: null | UserData;
   message: null | string | undefined;
   token: null | string;
+  responseStatus?: number;
 };
 
 export type UserData = {
@@ -11,7 +12,10 @@ export type UserData = {
   email: string;
 };
 
-export type laravelRequestType = {
+export type AuthErrorType = {
   status: number;
-  data?: { errors: { email?: string[]; password: string[] } };
+  data?: {
+    errors?: { email?: string[]; password: string[] };
+    message?: string;
+  };
 };

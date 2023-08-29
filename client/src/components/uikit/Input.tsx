@@ -16,9 +16,12 @@ const Input: React.FC<InputType> = ({
 }) => {
   return (
     <div className={`  relative h-18  flex  flex-col   ${divStyle}`}>
-      <label className={`${labelStyle}`}>{label}</label>
+      <label htmlFor={name} className={`${labelStyle}`}>
+        {label}
+      </label>
       {Icon}
       <input
+        id={name}
         type={type}
         autoComplete="off"
         autoCorrect="false"
