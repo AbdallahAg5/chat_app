@@ -1,6 +1,11 @@
 import { InitialStateType } from '../type/redux';
 import { createSlice } from '@reduxjs/toolkit';
-import AuthThunk, { GetAuthUser, RegisterThunk } from './AuthAsync';
+import AuthThunk, {
+  CompleProfileThunk,
+  GetAuthUser,
+  LoginThunk,
+  RegisterThunk,
+} from './AuthAsync';
 import {
   GetAuthUserPending,
   GetAuthUserRejected,
@@ -12,6 +17,7 @@ const InitialState: InitialStateType = {
   status: null,
   message: null,
   token: null,
+  profileCompleted: null,
 };
 
 const AuthSlice = createSlice({
@@ -28,7 +34,13 @@ const AuthSlice = createSlice({
       .addCase(GetAuthUser.rejected, GetAuthUserRejected)
       .addCase(RegisterThunk.pending, GetAuthUserPending)
       .addCase(RegisterThunk.fulfilled, GetAuthUserSuccess)
-      .addCase(RegisterThunk.rejected, GetAuthUserRejected);
+      .addCase(RegisterThunk.rejected, GetAuthUserRejected)
+      .addCase(LoginThunk.pending, GetAuthUserPending)
+      .addCase(LoginThunk.fulfilled, GetAuthUserSuccess)
+      .addCase(LoginThunk.rejected, GetAuthUserRejected)
+      .addCase(CompleProfileThunk.pending, GetAuthUserPending)
+      .addCase(CompleProfileThunk.fulfilled, GetAuthUserSuccess)
+      .addCase(CompleProfileThunk.rejected, GetAuthUserRejected);
   },
 });
 

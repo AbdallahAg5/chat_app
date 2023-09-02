@@ -31,7 +31,7 @@ class GoogleAuthController extends Controller
                 "google_id" => $google_user->getId()
             ]);
             Auth::login($new_user);
-            return redirect('http://localhost:5173');
+            return redirect('http://localhost:5173/complete/profile');
         }
         else{
             Auth::login($new_user);

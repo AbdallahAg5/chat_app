@@ -49,18 +49,19 @@ export type FormIconPropType = {
 };
 
 export type CompleteFormType = {
-  firstName: string;
+  gender: 'm' | 'f';
   lastName: string;
   birthDate: string;
-  userImg: string;
+  img: string;
   phone: string;
+  country: string;
 };
 
 export type CompleteValFormType = {
   userName: string;
   lastName: string;
   birthDate: string;
-  userImg: string;
+  img: string;
   phone: string;
 };
 

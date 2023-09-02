@@ -45,8 +45,6 @@ class AuthController extends Controller
 
 }
 
-
-
    public function login(LoginRequest $request){
         $data = $request->validated();
 
@@ -67,17 +65,39 @@ class AuthController extends Controller
 
    }
 
-
-
    public function profile(){
-
 
       return response()->json([
         'status' => 'success',
-        'message' => 'User auth',
+        'message' => 'You are authenticated',
         'user' => auth()->user(),
     ]);
    }
+
+
+
+   public function completeProfile(Request $request){
+
+    $data = $request->all();
+
+    if ($request->hasFile('img')) {
+        $image = $request->file('img');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/images', $filename);
+        $data['img'] = $filename;
+    }
+
+    // Retrieve the authenticated user instance and update its data
+    $user = Auth::user();
+    $user->update($data);
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Profile updated successfully!',
+        'user' => $user,
+        'profileCompleted' => true
+    ]);
+}
 
 
    public function logout(){

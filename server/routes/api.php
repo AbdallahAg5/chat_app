@@ -18,11 +18,21 @@ use App\Http\Controllers\AuthController;
 
 
 Route::group(["prefix" => "auth"],function(){
-    Route::get('/google',[GoogleAuthController::class,"redirect"]);
-    Route::get('/google/callback',[GoogleAuthController::class,"callBackGoogle"]);
-    Route::post('/register',[AuthController::class,"register"]);
-    Route::post('/login',[AuthController::class,"login"]);
-    Route::get('/profile',[AuthController::class,"profile"]);
+    Route::controller(GoogleAuthController::class)->group(function(){
+        Route::get('/google',"redirect");
+        Route::get('/google/callback',"callBackGoogle");
+    });
+
+    Route::controller(AuthController::class)->group(function(){
+        Route::post('/register',"register");
+        Route::post('/login',"login");
+
+    Route::group(["middleware"=>"auth:api"],function(){
+        Route::get('/profile',"profile");
+        Route::post('/complete-profile',"completeProfile");
+    });
+
+    });
 });
 
 

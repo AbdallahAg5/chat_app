@@ -5,15 +5,19 @@ import CompleteProfile from './pages/CompleteProfile';
 const Loader = lazy(() => import('./components/uikit/Loader'));
 const StepProvider = lazy(() => import('./context/StepContext'));
 const Form = lazy(() => import('./pages/AuthForm'));
-const AuthContext = lazy(() => import('./context/AuthContext'));
+const MemoizedAuthContext = lazy(() => import('./context/AuthContext'));
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loader />}>
+      <Suspense
+        fallback={
+          <Loader style="w-full h-screen flex justify-center items-center bg-gray-700" />
+        }
+      >
         <Routes>
           <Route element={<Form />} path="/" />
-          <Route element={<AuthContext />}>
+          <Route element={<MemoizedAuthContext />}>
             <Route
               element={
                 <ImageContextProvider>

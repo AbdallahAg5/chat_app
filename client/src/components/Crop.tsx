@@ -3,6 +3,7 @@ import { Cropper, CropperRef } from 'react-advanced-cropper';
 import 'react-advanced-cropper/dist/style.css';
 import { ImgContext } from '../context/ProfileImgContext';
 import Btn from './uikit/Btn';
+import { Xmark } from '../assets/Icons';
 
 export const ImgCropper: React.FC<{
   HandleCropper: () => void;
@@ -16,7 +17,6 @@ export const ImgCropper: React.FC<{
       const canvas = cropper.getCanvas();
       if (canvas) {
         canvas && Img?.setCroppedImg(canvas.toDataURL());
-        Img?.setUploadedImage(null);
       }
       HandleCropper();
     }
@@ -39,6 +39,10 @@ export const ImgCropper: React.FC<{
         'cropper absolute z-50 w-full  h-screen top-0 left-0 flex backdrop-blur-lg flex-col justify-center items-center  bg-black/50'
       }
     >
+      <Xmark
+        style="absolute top-4 right-5 w-8 h-8 fill-customBlue cursor-pointer hover:stroke-error stroke-white"
+        onClick={() => HandleCropper()}
+      />
       <Cropper
         ref={cropperRef}
         src={URL.createObjectURL(Img?.uploadedImage && Img?.uploadedImage)}

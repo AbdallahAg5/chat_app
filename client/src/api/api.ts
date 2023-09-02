@@ -19,7 +19,7 @@ export default axiosClient;
 
 axiosClient.interceptors.request.use((config) => {
   tokenFromRedux
-    ? (config.headers.Authorization = `${tokenFromRedux}`)
-    : token && (config.headers.Authorization = `${token}`);
+    ? (config.headers.Authorization = `Bearer ${tokenFromRedux}`)
+    : token && (config.headers.Authorization = `Bearer ${token}`);
   return config;
 });

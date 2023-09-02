@@ -1,7 +1,7 @@
-import { AuthErrorType, InitialStateType, UserData } from '../type/redux';
 import { PayloadAction } from '@reduxjs/toolkit';
 import Cookies from 'universal-cookie';
 import { setToken } from '../api/api';
+import { AuthErrorType, InitialStateType, UserData } from '../type/redux';
 
 const cookies = new Cookies();
 
@@ -10,6 +10,7 @@ type SuccessPayload = {
   status: 'error' | 'success';
   token: string;
   user: UserData;
+  profileCompleted: boolean;
 };
 
 export const GetAuthUserPending = (state: InitialStateType) => {
@@ -24,6 +25,7 @@ export const GetAuthUserSuccess = (
   state.user = payload.user;
   state.message = payload.message;
   state.token = payload.token;
+  state.profileCompleted = payload?.profileCompleted || false;
   !cookies.get('token') &&
     cookies.set('token', payload.token, {
       path: '/',
@@ -50,8 +52,18 @@ export const GetAuthUserRejected = (
     state.message = passErr[0];
   } else if (message && responseStatus == 401) {
     state.message = message;
+  } else if (responseStatus == 500) {
+    state.message = 'Server Error';
   }
 
   state.responseStatus = responseStatus;
   state.status = 'error';
+};
+
+export const CompleteProfile = (
+  state: InitialStateType,
+  { payload }: PayloadAction<SuccessPayload>
+) => {
+  state.user = payload.user;
+  state.profileCompleted = payload.profileCompleted;
 };

@@ -1,9 +1,9 @@
-function Loader() {
+const Loader: React.FC<{ style: string }> = ({ style }) => {
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-gray-700">
+    <div className={style}>
       <div className="lds-hourglass"></div>
     </div>
   );
-}
+};
 
 export default Loader;

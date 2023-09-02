@@ -11,7 +11,6 @@ const Input: React.FC<InputType> = ({
   error,
   divStyle,
   label,
-  onChangeHandler,
   labelStyle,
 }) => {
   return (
@@ -28,7 +27,6 @@ const Input: React.FC<InputType> = ({
         placeholder={placeholder}
         spellCheck="false"
         className={` py-[.4em] bg-white text-black   ${style} `}
-        onChange={onChangeHandler}
         {...register(name, registredOption)}
         name={name}
       />

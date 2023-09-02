@@ -2,15 +2,15 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { EmailIcon, Password } from '../../assets/Icons';
 import Btn from '../uikit/Btn';
 import Input from '../uikit/Input';
-// import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-// import AuthThunk from '../redux/AuthAsync';
-// import { useDispatch } from 'react-redux';
-// import { RootType } from '../redux/store';
 import { EmailOption, PasswordOption } from '../../data';
 import { FormBodyType, Inputs, ValType } from '../../type';
+import { LoginThunk } from '../../redux/AuthAsync';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import { RootType } from '../../redux/store';
+import { useDispatch } from 'react-redux';
 
 export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
-  // const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
+  const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
   const {
     register,
     handleSubmit,
@@ -19,6 +19,7 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
 
   const onSubmit: SubmitHandler<Inputs> = (data: ValType) => {
     console.log(data);
+    dispatch(LoginThunk(data));
   };
 
   return (

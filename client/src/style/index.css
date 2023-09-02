@@ -10,6 +10,7 @@
     --bgColor: white;
     --textColor: black;
     --error: red;
+    --softError: rgb(206, 41, 41);
   }
 
   :root[data-theme='dark'] {

@@ -4,6 +4,7 @@ export type InitialStateType = {
   message: null | string | undefined;
   token: null | string;
   responseStatus?: number;
+  profileCompleted?: boolean | null;
 };
 
 export type UserData = {

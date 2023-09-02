@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Header } from '../components/Header';
 import StepOne from '../components/completeProfile/StepOne';
 import StepTwo from '../components/completeProfile/StepTwo';
@@ -12,8 +12,11 @@ import { CompleteFormType } from '../type';
 import StepThree from '../components/completeProfile/StepThree';
 import { ToastId, useToast } from '@chakra-ui/react';
 import { ImgContext } from '../context/ProfileImgContext';
+import { CompleProfileThunk } from '../redux/AuthAsync';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 
 const CompleteProfile = () => {
+  const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
   const setImg = useContext(ImgContext);
   const activeStepContext = useContext(StepContext)?.activeStep;
   const auth = useSelector((e: RootType) => e.auth);
@@ -22,22 +25,36 @@ const CompleteProfile = () => {
   const {
     watch,
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<CompleteFormType>();
   const onSubmit: SubmitHandler<CompleteFormType> = (data) => {
     setActiveStep && setActiveStep(3);
-    console.log(data);
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(data)) {
+      console.log(key);
+      if (key == 'img') {
+        formData.append(key, value[0]);
+      }
+      formData.append(key, value);
+    }
+    dispatch(CompleProfileThunk(formData));
   };
-  const userImgValue = watch('userImg');
+  const userImgValue = watch('img');
   // const location = useGeoLocation();
 
   useEffect(() => {
-    if (userImgValue && userImgValue.length > 0 && !setImg?.croppedImg) {
+    if (userImgValue && userImgValue.length > 0 && !setImg?.delete) {
       const selectedImage = userImgValue[0];
       setImg?.setUploadedImage(selectedImage);
+    } else if (setImg?.delete) {
+      setImg.setCroppedImg(null);
+      setImg.setUploadedImage(null);
+      setImg.setDelete(false);
+      reset();
     }
-  }, [userImgValue, setImg]);
+  }, [userImgValue, setImg, reset]);
 
   useEffect(() => {
     if (auth.message && auth.status == 'success') {

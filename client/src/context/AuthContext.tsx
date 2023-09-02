@@ -1,35 +1,32 @@
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-// import { RootType } from '../redux/store';
-// import { useEffect } from 'react';
-// import { GetAuthUser } from '../redux/AuthAsync';
-// import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-// import Cookies from 'universal-cookie';
+import { RootType } from '../redux/store';
+import { useEffect } from 'react';
+import { GetAuthUser } from '../redux/AuthAsync';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import Cookies from 'universal-cookie';
+import React from 'react';
 
-// const cookies = new Cookies();
+const cookies = new Cookies();
 const AuthContext = () => {
-  // const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
-  // const auth = useSelector((e: RootType) => e.auth);
-  // const navigate = useNavigate();
+  const dispatch: ThunkDispatch<RootType, unknown, AnyAction> = useDispatch();
+  const auth = useSelector((e: RootType) => e.auth);
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (
-  //     cookies.get('token') &&
-  //     !auth.token &&
-  //     auth.message != 'Unauthenticated.'
-  //   ) {
-  //     dispatch(GetAuthUser());
-  //   } else if (
-  //     auth.message === 'Unauthenticated.' &&
-  //     auth.responseStatus === 401
-  //   ) {
-  //     navigate('/');
-  //   }
+  useEffect(() => {
+    dispatch(GetAuthUser());
+  }, [dispatch]);
 
-  //   console.log('hiiiiiiiii');
-  // }, [auth.message, auth.responseStatus]);
+  useEffect(() => {
+    if (auth.message === 'Unauthenticated.' && auth.responseStatus === 401) {
+      document.cookie =
+        'token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      navigate('/');
+    }
+  }, [auth.message, auth.responseStatus, navigate]);
 
   return <Outlet />;
 };
 
-export default AuthContext;
+const MemoizedAuthContext = React.memo(AuthContext);
+export default MemoizedAuthContext;

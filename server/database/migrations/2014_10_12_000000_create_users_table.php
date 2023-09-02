@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
+            $table->string('password');
+            $table->string('img')->nullable();
+            $table->enum('gender',['m','f'])->nullable();
+            $table->string('county')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
             $table->string('google_id')->nullable();
             $table->boolean('verified')->default(false);
             $table->string('verificationToken')->nullable();

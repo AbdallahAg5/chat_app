@@ -17,7 +17,8 @@ const useTheme: (initialTheme: 'dark' | 'light') => useThemeReturnType = (
     if (localTheme) {
       setTheme(localTheme as 'dark' | 'light');
     }
-  }, []);
+    localStorage.setItem('chakra-ui-color-mode', theme);
+  }, [theme]);
 
   const changeTheme = (newTheme: 'dark' | 'light') => {
     localStorage.setItem('theme', newTheme);

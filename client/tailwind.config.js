@@ -14,6 +14,7 @@ export default {
         bgColor: 'var(--bgColor)',
         textColor: 'var(--textColor)',
         error: 'var(--error)',
+        softError: 'var(--softError)',
       },
     },
   },
