@@ -6,6 +6,7 @@ const Loader = lazy(() => import('./components/uikit/Loader'));
 const StepProvider = lazy(() => import('./context/StepContext'));
 const Form = lazy(() => import('./pages/AuthForm'));
 const MemoizedAuthContext = lazy(() => import('./context/AuthContext'));
+const Chat = lazy(() => import('./pages/Chat'));
 
 const App: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const App: React.FC = () => {
               }
               path="/complete/profile"
             />
+            <Route element={<Chat />} path="/chat" />
           </Route>
         </Routes>
       </Suspense>

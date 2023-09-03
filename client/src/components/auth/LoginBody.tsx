@@ -18,7 +18,6 @@ export const LoginBody: React.FC<FormBodyType> = ({ btnText }) => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data: ValType) => {
-    console.log(data);
     dispatch(LoginThunk(data));
   };
 

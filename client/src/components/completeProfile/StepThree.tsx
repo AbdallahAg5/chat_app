@@ -8,7 +8,7 @@ import Loader from '../uikit/Loader';
 
 const StepThree: React.FC = () => {
   const profileCompleted = useSelector(
-    (e: RootType) => e.auth.profileCompleted
+    (e: RootType) => e.auth?.user?.profileCompleted
   );
   return (
     <div

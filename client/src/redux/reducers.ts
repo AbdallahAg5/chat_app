@@ -10,7 +10,6 @@ type SuccessPayload = {
   status: 'error' | 'success';
   token: string;
   user: UserData;
-  profileCompleted: boolean;
 };
 
 export const GetAuthUserPending = (state: InitialStateType) => {
@@ -25,7 +24,6 @@ export const GetAuthUserSuccess = (
   state.user = payload.user;
   state.message = payload.message;
   state.token = payload.token;
-  state.profileCompleted = payload?.profileCompleted || false;
   !cookies.get('token') &&
     cookies.set('token', payload.token, {
       path: '/',
@@ -58,12 +56,4 @@ export const GetAuthUserRejected = (
 
   state.responseStatus = responseStatus;
   state.status = 'error';
-};
-
-export const CompleteProfile = (
-  state: InitialStateType,
-  { payload }: PayloadAction<SuccessPayload>
-) => {
-  state.user = payload.user;
-  state.profileCompleted = payload.profileCompleted;
 };

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('google_id')->nullable();
             $table->boolean('verified')->default(false);
             $table->string('verificationToken')->nullable();
+            $table->boolean('profileCompleted')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

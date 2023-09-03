@@ -85,6 +85,7 @@ class AuthController extends Controller
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $path = $image->storeAs('public/images', $filename);
         $data['img'] = $filename;
+        $data['profileCompleted'] = true;
     }
 
     // Retrieve the authenticated user instance and update its data
@@ -95,7 +96,6 @@ class AuthController extends Controller
         'status' => 'success',
         'message' => 'Profile updated successfully!',
         'user' => $user,
-        'profileCompleted' => true
     ]);
 }
 

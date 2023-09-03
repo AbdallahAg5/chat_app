@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { FormIconPropType, ThemePropsType } from '../type';
 
 export const EmailIcon: React.FC<FormIconPropType> = ({ style }) => {
@@ -84,7 +85,7 @@ export const User: React.FC<FormIconPropType> = ({ style }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke=""
-      className={style + ' stroke-black'}
+      className={style + ' stroke-black group-hover/items:stroke-white'}
     >
       <path
         strokeLinecap="round"
@@ -147,6 +148,79 @@ export const Xmark: React.FC<{ style: string; onClick: () => void }> = ({
       strokeLinecap="round"
       strokeLinejoin="round"
       d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
+);
+
+export const Add = () => (
+  <motion.svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="w-6 h-6 cursor-pointer"
+    whileHover={{ scale: 1.1 }}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 4.5v15m7.5-7.5h-15"
+    />
+  </motion.svg>
+);
+
+export const Search = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="w-4 h-4"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+    />
+  </svg>
+);
+
+export const Arrow: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <div className="group ">
+    {children}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6 cursor-pointer"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  </div>
+);
+
+export const Logout = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    className="w-6 h-6 stroke-black group-hover/items:stroke-white"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
     />
   </svg>
 );

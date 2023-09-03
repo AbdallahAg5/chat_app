@@ -1,40 +1,20 @@
-import { ToastId, useToast } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import FormComp from '../components/auth/Form';
 import { LoginBody } from '../components/auth/LoginBody';
 import { RegisterBody } from '../components/auth/RegisterBody';
 import Welcome from '../components/auth/Welcome';
-import { RootType } from '../redux/store';
 import { SEO } from '../service/Seo';
+import Redirecting from '../service/Redirecting';
+import { RootType } from '../redux/store';
+import { useSelector } from 'react-redux';
 
 const Form: React.FC = () => {
   const [login, setLogin] = useState<boolean>(false);
-  const navigate = useNavigate();
   const auth = useSelector((e: RootType) => e.auth);
-  const toast = useToast();
-
-  useEffect(() => {
-    if (auth.message && auth.status == 'error') {
-      const toastId: ToastId = toast({
-        title: 'Auth message.',
-        description: auth.message,
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-        position: 'top-right',
-      });
-
-      return () => {
-        toast.close(toastId);
-      };
-    }
-    auth.message && auth.status == 'success' && navigate('/complete/profile');
-  }, [auth.message, toast, auth.status, navigate]);
 
   return (
     <>
+      {auth.message && <Redirecting />}
       <SEO title="Chat App" />
       <div className="flex">
         <Welcome />

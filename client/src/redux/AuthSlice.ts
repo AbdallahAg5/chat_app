@@ -17,7 +17,6 @@ const InitialState: InitialStateType = {
   status: null,
   message: null,
   token: null,
-  profileCompleted: null,
 };
 
 const AuthSlice = createSlice({
