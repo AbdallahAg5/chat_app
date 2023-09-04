@@ -1,29 +1,25 @@
-import { Input, InputGroup, InputLeftAddon } from '@chakra-ui/react';
-import { Add, Search } from '../../assets/Icons';
+import { BackArrow } from '../../assets/Icons';
+import { SideBarContext } from '../../context/SideBarContext';
 import SideBarFooter from './SideBarFooter';
 import ListChannelsSkeleton from './skeleton/ListChannels';
 import { useContext } from 'react';
-import { SideBarContext } from '../../context/SideBarContext';
 
-function ListChannels() {
+function SingleChannel() {
   const { setOpen } = useContext(SideBarContext) ?? {};
 
-  const ChannelHandler = () => {
-    setOpen && setOpen(false);
-  };
-
   return (
-    <div className="w-[300px] pb-4 px-6 border-r-2 border-white  text-textColor h-screen flex flex-col justify-between relative bg-bgColor ">
+    <div className="w-[300px] pb-4 px-6 border-r-2 border-white  text-textColor h-auto flex flex-col justify-between relative bg-bgColor ">
       <div>
-        <div className="flex justify-between py-4 ">
-          <h1>Channels</h1>
-          <Add />
+        <div className="flex gap-x-4 py-4 ">
+          <BackArrow setOpen={setOpen} />
+          <h1>All Channels</h1>
         </div>
         <div>
-          <InputGroup>
-            <InputLeftAddon children={<Search />} />
-            <Input type="search" placeholder="Search Channel" />
-          </InputGroup>
+          <p className=" uppercase font-bold py-4">Front-end developers</p>
+          <p>
+            Pellentesque sagittis elit enim, sit amet ultrices tellus accumsan
+            quis. In gravida mollis purus, at interdum arcu tempor non
+          </p>
         </div>
         <div className="my-8  h-[400px] overflow-auto">
           {Array(4)
@@ -36,7 +32,6 @@ function ListChannels() {
                 ) : (
                   <div
                     key={i}
-                    onClick={ChannelHandler}
                     className="px-2 py-1 cursor-pointer rounded-md transition-all ease-in-out duration-300 my-[1.2em] flex gap-x-8 items-center font-bold  text-xl hover:bg-customGray"
                   >
                     <span className="py-2 px-2 bg-customGray rounded-md font-bold  text-xl">
@@ -54,4 +49,4 @@ function ListChannels() {
   );
 }
 
-export default ListChannels;
+export default SingleChannel;

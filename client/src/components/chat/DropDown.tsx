@@ -7,7 +7,7 @@ function DropDown() {
         <User style="w-6 h-6" /> My Profile
       </p>
       <hr className="w-full" />
-      <p className="pl-4 flex gap-2 hover:bg-slate-700 group/items py-2">
+      <p className="pl-4 flex gap-2 hover:bg-slate-700 group/items py-2 text-error">
         <Logout /> Logout
       </p>
     </div>

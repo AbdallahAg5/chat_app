@@ -1,9 +1,11 @@
-import ListChannels from '../components/chat/ListChannels';
+import MessageSection from '../components/chat/MessageSection';
+import SideBarContextProvider from '../context/SideBarContext';
 
 function Chat() {
   return (
-    <div>
-      <ListChannels />
+    <div className="flex">
+      <SideBarContextProvider />
+      <MessageSection />
     </div>
   );
 }

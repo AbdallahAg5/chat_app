@@ -11,7 +11,9 @@ function SideBarFooter() {
           draggable="false"
           className="w-10 h-10 object-cover"
         />
-        <p className=" font-bold">Xanthe Neal</p>
+        <p className=" font-bold animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-xl text-transparent">
+          Xanthe Neal
+        </p>
         <Arrow>
           <DropDown />
         </Arrow>
