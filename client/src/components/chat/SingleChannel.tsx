@@ -8,7 +8,7 @@ function SingleChannel() {
   const { setOpen } = useContext(SideBarContext) ?? {};
 
   return (
-    <div className="w-[300px] pb-4 px-6 border-r-2 border-white  text-textColor h-auto flex flex-col justify-between relative bg-bgColor ">
+    <div className="w-[330px] pb-4 px-6 border-r-2 border-white   text-textColor h-screen overflow-auto flex flex-col justify-between relative bg-bgColor ">
       <div>
         <div className="flex gap-x-4 py-4 ">
           <BackArrow setOpen={setOpen} />

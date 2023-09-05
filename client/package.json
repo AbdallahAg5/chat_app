@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "emoji-picker-react": "^4.5.0",
     "framer-motion": "^10.16.1",
     "react": "^18.2.0",
     "react-advanced-cropper": "^0.19.3",

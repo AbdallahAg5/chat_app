@@ -13,7 +13,7 @@ function ListChannels() {
   };
 
   return (
-    <div className="w-[300px] pb-4 px-6 border-r-2 border-white  text-textColor h-screen flex flex-col justify-between relative bg-bgColor ">
+    <div className="w-[330px] pb-4 px-6 border-r-2 border-white  h-screen text-textColor overflow-auto flex flex-col justify-between relative bg-bgColor ">
       <div>
         <div className="flex justify-between py-4 ">
           <h1>Channels</h1>
