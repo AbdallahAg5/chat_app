@@ -5,7 +5,10 @@ function Welcome() {
   return (
     <div className="w-[50%] h-screen bg-customGray py-5 px-5 hidden lg:flex flex-col justify-between items-center">
       <motion.div className="pt-24 px-12" animate={{ translateY: [-100, 0] }}>
-        <h1 className=" font-normal text-3xl text-textColor">
+        <h1
+          data-testid="cypress-welcome-title"
+          className=" font-normal text-3xl text-textColor"
+        >
           Lorem ipsum dolor sit amet, incididunt consectetur adipiscing elit.
         </h1>
         <p className=" text-textColor">
