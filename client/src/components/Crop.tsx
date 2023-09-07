@@ -1,9 +1,9 @@
 import { useContext, useRef } from 'react';
 import { Cropper, CropperRef } from 'react-advanced-cropper';
 import 'react-advanced-cropper/dist/style.css';
+import { Xmark } from '../assets/Icons';
 import { ImgContext } from '../context/ProfileImgContext';
 import Btn from './uikit/Btn';
-import { Xmark } from '../assets/Icons';
 
 export const ImgCropper: React.FC<{
   HandleCropper: () => void;

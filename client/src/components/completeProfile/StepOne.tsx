@@ -3,12 +3,12 @@
 import { Button, useToast } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
 import profile from '../../assets/profile.png';
+import { ImgContext } from '../../context/ProfileImgContext';
 import { StepContext } from '../../context/StepContext';
 import { StepPropsType } from '../../type';
 import { ImgCropper } from '../Crop';
 import Btn from '../uikit/Btn';
 import Input from '../uikit/Input';
-import { ImgContext } from '../../context/ProfileImgContext';
 
 const StepOne: React.FC<StepPropsType> = ({ register }) => {
   const { uploadedImage, croppedImg, setDelete } = useContext(ImgContext) ?? {};

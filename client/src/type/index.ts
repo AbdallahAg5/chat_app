@@ -126,3 +126,16 @@ export interface ContextProviderProps {
 export type SeoType = {
   title: string;
 };
+
+export interface FormatOptions {
+  hour: 'numeric' | '2-digit';
+  minute: 'numeric' | '2-digit';
+  hour12: boolean;
+}
+
+export interface MessageInterface {
+  message: string;
+  timestamps: Date;
+  userImg: string;
+  userName: string;
+}

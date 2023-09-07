@@ -4,6 +4,7 @@ import React, { ReactNode, createContext, useState } from 'react';
 type EmojieContextType = {
   onClick: (emojiData: EmojiClickData) => void;
   selectedEmoji: string;
+  Arrayemojies: string[];
 };
 
 export const EmojieContext = createContext<EmojieContextType | null>(null);
@@ -11,10 +12,12 @@ export const EmojieContext = createContext<EmojieContextType | null>(null);
 const EmojieContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const [Arrayemojies] = useState<string[]>([]);
   const [selectedEmoji, setSelectedEmoji] = useState<string>('');
 
   function onClick(emojiData: EmojiClickData) {
     setSelectedEmoji(emojiData.unified);
+    Arrayemojies.push(emojiData.unified);
   }
 
   return (
@@ -22,6 +25,7 @@ const EmojieContextProvider: React.FC<{ children: ReactNode }> = ({
       value={{
         selectedEmoji: selectedEmoji,
         onClick: onClick,
+        Arrayemojies: Arrayemojies,
       }}
     >
       {children}
