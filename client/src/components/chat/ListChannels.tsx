@@ -32,7 +32,7 @@ function ListChannels() {
               <>
                 {/* eslint-disable-next-line no-constant-condition */}
                 {true === true ? (
-                  <ListChannelsSkeleton />
+                  <ListChannelsSkeleton key={i} />
                 ) : (
                   <div
                     key={i}

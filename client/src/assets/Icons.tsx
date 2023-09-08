@@ -270,7 +270,7 @@ export const EmojiesIcon = () => (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className="w-6 h-6 absolute top-7 right-28 cursor-pointer peer z-50"
+    className="w-6 h-6 absolute top-7 right-28 cursor-pointer peer z-30"
   >
     <path
       strokeLinecap="round"
