@@ -136,20 +136,21 @@ export const Xmark: React.FC<{ style: string; onClick: () => void }> = ({
   style,
   onClick,
 }) => (
-  <svg
+  <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     className={style}
     onClick={onClick}
+    whileHover={{ scale: 1.1 }}
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       d="M6 18L18 6M6 6l12 12"
     />
-  </svg>
+  </motion.svg>
 );
 
 export const Add = () => (
@@ -226,8 +227,8 @@ export const Logout = () => (
 );
 
 export const BackArrow: React.FC<{
-  setOpen: ((open: boolean) => void) | undefined;
-}> = ({ setOpen }) => (
+  setSwitchSideBar: ((switchSideBar: boolean) => void) | undefined;
+}> = ({ setSwitchSideBar }) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -236,7 +237,7 @@ export const BackArrow: React.FC<{
     stroke="currentColor"
     className="w-6 h-6 cursor-pointer"
     whileHover={{ scale: 1.1 }}
-    onClick={() => setOpen && setOpen(true)}
+    onClick={() => setSwitchSideBar && setSwitchSideBar(false)}
   >
     <path
       strokeLinecap="round"
@@ -278,4 +279,26 @@ export const EmojiesIcon = () => (
       d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
     />
   </svg>
+);
+
+export const Bars: React.FC<{ onClick: () => void; open: boolean }> = ({
+  onClick,
+  open,
+}) => (
+  <motion.svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className={` w-6 h-6 cursor-pointer ${open ? ' ml-4 lg:hidden' : null} `}
+    whileHover={{ scale: 1.1 }}
+    onClick={onClick}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+    />
+  </motion.svg>
 );

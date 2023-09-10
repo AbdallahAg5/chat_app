@@ -1,18 +1,28 @@
-import { BackArrow } from '../../assets/Icons';
+import { useContext } from 'react';
+import { BackArrow, Xmark } from '../../assets/Icons';
 import { SideBarContext } from '../../context/SideBarContext';
 import SideBarFooter from './SideBarFooter';
 import ListChannelsSkeleton from './skeleton/ListChannels';
-import { useContext } from 'react';
 
 function SingleChannel() {
-  const { setOpen } = useContext(SideBarContext) ?? {};
+  const { setSwitchSideBar, open, setOpen } = useContext(SideBarContext) ?? {};
 
   return (
-    <div className="w-[330px] pb-4 px-6 border-r-2 border-white   text-textColor h-screen overflow-auto flex flex-col justify-between relative bg-bgColor ">
+    <div
+      className={`${
+        open ? 'translate-x-0 pb-4 px-6 ' : ' -translate-x-[100vw] w-0 '
+      } duration-300  ease-in-out transition-all  w-[330px]   border-r-2 border-white  h-screen text-textColor overflow-auto flex flex-col justify-between absolute z-50 lg:relative bg-bgColor `}
+    >
       <div>
-        <div className="flex gap-x-4 py-4 ">
-          <BackArrow setOpen={setOpen} />
-          <h1>All Channels</h1>
+        <div className="flex gap-x-4 py-4  justify-between   w-full">
+          <div className="flex gap-x-4">
+            <BackArrow setSwitchSideBar={setSwitchSideBar} />
+            <h1>All Channels</h1>
+          </div>
+          <Xmark
+            onClick={() => setOpen && setOpen(false)}
+            style=" w-6 h-6 fill-customBlue cursor-pointer hover:stroke-error stroke-white  "
+          />
         </div>
         <div>
           <p className=" uppercase font-bold py-4">Front-end developers</p>
