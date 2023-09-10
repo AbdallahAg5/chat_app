@@ -7,7 +7,6 @@ import SideBarContextProvider from '../context/SideBarContext';
 function Chat() {
   return (
     <div className="flex ">
-      {/* <Popup /> */}
       <SideBarContextProvider>
         <MessageContextProvider>
           <EmojieContextProvider>

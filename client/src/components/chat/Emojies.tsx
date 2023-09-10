@@ -6,7 +6,7 @@ export default function Emojis() {
   const { onClick } = useContext(EmojieContext) ?? {};
 
   return (
-    <div className="absolute hidden hover:flex peer-hover:flex bottom-[3.5rem] z-50 right-10">
+    <div className="absolute hidden hover:flex peer-hover:flex bottom-[3.5rem] z-50 left-4 md:left-auto md:right-10">
       <EmojiPicker onEmojiClick={onClick} autoFocusSearch={false} />
     </div>
   );

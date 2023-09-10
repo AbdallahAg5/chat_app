@@ -153,7 +153,7 @@ export const Xmark: React.FC<{ style: string; onClick: () => void }> = ({
   </motion.svg>
 );
 
-export const Add = () => (
+export const Add: React.FC<{ onClick: () => void }> = ({ onClick }) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -162,6 +162,7 @@ export const Add = () => (
     stroke="currentColor"
     className="w-6 h-6 cursor-pointer"
     whileHover={{ scale: 1.1 }}
+    onClick={onClick}
   >
     <path
       strokeLinecap="round"
@@ -271,7 +272,7 @@ export const EmojiesIcon = () => (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className="w-6 h-6 absolute top-7 right-28 cursor-pointer peer z-30"
+    className="w-6 h-6 absolute top-7 right-20 md:right-28 cursor-pointer peer z-30"
   >
     <path
       strokeLinecap="round"
@@ -281,10 +282,10 @@ export const EmojiesIcon = () => (
   </svg>
 );
 
-export const Bars: React.FC<{ onClick: () => void; open: boolean }> = ({
-  onClick,
-  open,
-}) => (
+export const Bars: React.FC<{
+  onClick: () => void;
+  open: boolean | undefined;
+}> = ({ onClick, open }) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

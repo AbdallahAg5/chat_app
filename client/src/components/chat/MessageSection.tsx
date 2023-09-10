@@ -8,6 +8,7 @@ import Message from '../uikit/Message';
 import Emojies from './Emojies';
 import { MessageContext } from '../../context/MessageContext';
 import { SideBarContext } from '../../context/SideBarContext';
+import { Header } from '../Header';
 
 function MessageSection() {
   const { Arrayemojies } = useContext(EmojieContext) ?? {};
@@ -18,13 +19,13 @@ function MessageSection() {
     <div className="w-full flex flex-col h-screen">
       <div
         role="heading"
-        className={`shadow-sm shadow-black py-1 w-full ${
+        className={`shadow-sm shadow-textColor py-1 w-full ${
           open ? ' lg:pl-24' : ' pl-4 '
         }`}
       >
         <p className=" uppercase font-bold py-4 flex gap-4">
           <Bars onClick={() => setOpen && setOpen(true)} open={open} />
-          Front-end developers{' '}
+          Front-end developers <Header />
         </p>
       </div>
       <div className="flex-grow overflow-auto pt-6 gap-12 flex px-6 md:px-24  flex-col">
@@ -45,11 +46,11 @@ function MessageSection() {
           </AnimatePresence>
         )}
       </div>
-      <div className="py-4 px-8 relative">
+      <div className="py-4 px-2 md:px-8 relative">
         <EmojiesIcon />
         <Emojies />
         <Button
-          className=" right-10 z-40 top-[20px]"
+          className=" right-4 md:right-10 z-40 top-[20px]"
           cursor={'pointer'}
           position={'absolute'}
           bgColor={'facebook.300'}

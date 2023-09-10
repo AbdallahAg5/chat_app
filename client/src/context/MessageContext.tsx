@@ -45,17 +45,17 @@ const MessageContextProvider: React.FC<{ children: ReactNode }> = ({
           userName: 'Fati Fati',
         };
         setMsjs((prevMsj) => [...prevMsj, data]);
+        paragraphElement.innerHTML = '';
+      } else {
+        toast({
+          title: 'Message Error.',
+          description: 'Please write a message.',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+          position: 'top-right',
+        });
       }
-      paragraphElement.innerHTML = '';
-    } else {
-      toast({
-        title: 'Message Error.',
-        description: 'Please write a message.',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-        position: 'top-right',
-      });
     }
   };
 
