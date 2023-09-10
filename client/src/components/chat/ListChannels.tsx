@@ -20,8 +20,10 @@ function ListChannels() {
       {openPopUp && <Popup setOpenPopUp={setOpenPopUp} />}
       <div
         className={`${
-          open ? 'translate-x-0 pb-4 px-6 ' : ' -translate-x-[100vw] w-0 '
-        } duration-300  ease-in-out transition-all  w-[330px]   border-r-2 border-textColor  h-screen text-textColor overflow-auto flex flex-col justify-between absolute z-30 lg:relative bg-bgColor `}
+          open
+            ? 'translate-x-0 pb-4 px-6 w-[330px] '
+            : ' -translate-x-[100vw] w-0 '
+        } duration-300  ease-in-out transition-all     border-r-2 border-textColor  h-screen text-textColor overflow-auto flex flex-col justify-between absolute z-30 lg:relative bg-bgColor `}
       >
         <div>
           <div className="flex justify-between py-4 ">

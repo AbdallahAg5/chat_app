@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 import ListChannels from '../components/chat/ListChannels';
 import SingleChannel from '../components/chat/SingleChannel';
 
